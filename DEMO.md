@@ -2,6 +2,8 @@
 
 Target runtime: **2:55**. The video must be public on YouTube, three minutes or under, in English, and include audible narration. Do not add copyrighted music.
 
+Published demo: **https://youtu.be/sctmJ7kCQrk**
+
 ## Prepare before recording
 
 1. Use a 1440 × 900 or larger desktop and set browser zoom to 90% so the score, claim list, and inspector are visible together.
@@ -84,9 +86,9 @@ Target runtime: **2:55**. The video must be public on YouTube, three minutes or 
 
 ## Recording acceptance check
 
-- [ ] Runtime is 3:00 or less; target is 2:55.
-- [ ] Voiceover is audible and English.
-- [ ] The working product, evidence-chain wow moment, and Audit Mode reveal are visible.
-- [ ] Codex workflow, GPT-5.6 use, and human decisions are named specifically.
-- [ ] No secrets, personal notifications, third-party trademarks, or copyrighted music appear.
-- [ ] Final upload is a **public** YouTube video.
+- [x] Runtime is 3:00 or less; final runtime is 2:55.
+- [x] Voiceover is audible and English.
+- [x] The working product, evidence-chain wow moment, and Audit Mode reveal are visible.
+- [x] Codex workflow, GPT-5.6 use, and human decisions are named specifically.
+- [x] No secrets, personal notifications, third-party trademarks, or copyrighted music appear.
+- [x] Final upload is a **public** YouTube video: https://youtu.be/sctmJ7kCQrk.

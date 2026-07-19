@@ -8,6 +8,8 @@ Claim to Commit is a local repository evidence workbench for engineering leads, 
 
 The workbench never invents a relationship. It verifies the repository's explicit evidence contract, grades each claim as **proven**, **partial**, or **unsupported**, and explains exactly what is missing.
 
+**[Watch the 2:55 public demo](https://youtu.be/sctmJ7kCQrk)**
+
 ![Claim to Commit showing a complete six-artifact evidence chain](docs/screenshots/evidence-chain.png)
 
 ## The problem and the audience

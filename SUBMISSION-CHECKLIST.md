@@ -49,10 +49,10 @@ Official reference: [OpenAI Build Week FAQ](https://openai.devpost.com/details/f
 - [x] Script starts with audience/problem, demonstrates the wow moment by 0:20, covers Codex/GPT-5.6 at 2:20, and closes at 2:50.
 - [x] Exact clicks and pre-recording app state are documented.
 - [x] Script explicitly avoids copyrighted music, trademarks, secrets, and unrelated notifications.
-- [ ] Record the working product with clear English voiceover.
-- [ ] Confirm final duration is 3:00 or less and audio is intelligible.
-- [ ] Confirm the video explicitly covers what was built, how Codex was used, how GPT-5.6 was used, and which decisions were human.
-- [ ] Upload to YouTube as **Public** (not unlisted/private) and paste the URL into Devpost.
+- [x] Record the working product with clear English voiceover.
+- [x] Confirm final duration is 3:00 or less and audio is intelligible — final runtime is 2:55.
+- [x] Confirm the video explicitly covers what was built, how Codex was used, how GPT-5.6 was used, and which decisions were human.
+- [x] Upload to YouTube as **Public** (not unlisted/private): https://youtu.be/sctmJ7kCQrk.
 - [ ] Watch the public upload from beginning to end in a logged-out/private browser.
 
 ## Devpost fields
@@ -62,7 +62,7 @@ Official reference: [OpenAI Build Week FAQ](https://openai.devpost.com/details/f
 - [x] Public repository URL is known: `https://github.com/andreab67/claim-to-commit`.
 - [ ] Select **Developer Tools** as the single track.
 - [ ] Paste the final text from `DESCRIPTION.md` into the Devpost description field.
-- [ ] Add the public YouTube URL.
+- [ ] Add the public YouTube URL to Devpost: `https://youtu.be/sctmJ7kCQrk`.
 - [ ] Add the accessible public GitHub repository URL.
 - [ ] Add the two strongest screenshots: `docs/screenshots/evidence-chain.png` first and `docs/screenshots/claim-audit.png` second.
 - [ ] Run `/feedback` in **this primary Codex session**, copy the generated Session ID, and paste it into the required Devpost field.
