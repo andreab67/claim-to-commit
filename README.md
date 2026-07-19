@@ -164,6 +164,7 @@ The human decisions were the audience and trust problem, the Claim to Commit con
 ## Privacy, security, and limitations
 
 - No secrets are required or committed.
+- The only approved dependency install script is the lockfile-pinned `better-sqlite3@12.11.1` native build/prebuild step, declared in `package.json` for npm 11 supply-chain policy compatibility.
 - The service is localhost-only and sends no repository data elsewhere.
 - Git inspection is read-only and never shells through a user-provided command string.
 - Evidence paths must remain inside the scanned repository.
@@ -174,4 +175,3 @@ The human decisions were the audience and trust problem, the Claim to Commit con
 ## Third-party work and license
 
 The implementation uses the open-source packages listed in `package.json`, including React, Vite, Express, Zod, better-sqlite3, TypeScript, and Vitest. The product icon is original artwork supplied for this project and normalized locally; the interface and demo assets contain no third-party trademarks, copyrighted music, stock imagery, or copied product UI. Claim to Commit is released under the [MIT License](LICENSE).
-
