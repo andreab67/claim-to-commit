@@ -1,0 +1,18 @@
+
+# VarAlign local store (machine-local variable-tracking data)
+.varmem/
+
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+
+# Local scan cache and environment overrides
+.data/
+.env
+.env.local
+
+# Editor and operating-system noise
+.DS_Store
+Thumbs.db
+*.log
