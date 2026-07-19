@@ -53,6 +53,8 @@ That single command installs the locked dependencies when needed, builds the cli
 
 Press `Ctrl+C` to stop it.
 
+Public source: [github.com/andreab67/claim-to-commit](https://github.com/andreab67/claim-to-commit). The private GitLab repository remains a build mirror.
+
 ### Supported platforms
 
 - Windows 11 with Node 22+ and Git — verified for this submission.
@@ -158,6 +160,8 @@ The collaboration is visible in the dated commit history:
 - `59c6cf7`: Codex connected real decisions, sessions, commits, tests, and the user-provided original icon into an honest self-audit fixture.
 - `967d962`: Codex translated the chosen editorial-forensics design direction into the complete reviewer workbench and Audit Mode interaction.
 - `d5e8d7e`: Codex added production serving, the one-command demo, committed screenshots, and a live self-audit regression test.
+- `81120c2`: Codex assembled the README, timed video script, concise Devpost description, and requirement-mapped checklist.
+- `aa279ef` and `cd07e32`: a true clean-clone test exposed a machine-level npm policy conflict; Codex narrowed the approved native install step and isolated the locked install from user configuration.
 
 The human decisions were the audience and trust problem, the Claim to Commit concept, local-only scope, deterministic convention-based evidence, npm portability, the icon/art direction, the Audit Mode reveal, and the explicit exclusion of auth, payments, hosted integrations, and semantic inference. Those choices are recorded in `DECISIONS.md`. Codex accelerated specification, implementation, test design, visual iteration, browser verification, documentation, and the disciplined commit trail; the product and scope calls remained human-owned.
 

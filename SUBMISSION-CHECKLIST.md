@@ -27,8 +27,8 @@ Official reference: [OpenAI Build Week FAQ](https://openai.devpost.com/details/f
 - [x] No account, test credential, paid service, or secret is needed.
 - [x] `.env.example` contains placeholders/options only; `.env` and local data are ignored.
 - [x] Original icon is normalized at `public/icon.png`; demo assets use no third-party trademarks or stock art.
-- [ ] Make the GitLab repository public **or** share the private repository with both `testing@devpost.com` and `build-week-event@openai.com`.
-- [ ] Open the final repository URL in a logged-out/private browser and confirm the README, license, screenshots, and commits are visible.
+- [x] Public GitHub repository is live at `https://github.com/andreab67/claim-to-commit`; the private GitLab repository remains a build mirror.
+- [x] Anonymous HTTP checks returned 200 for the public repository and raw README, including the screenshot reference.
 
 ## README requirement map
 
@@ -59,11 +59,11 @@ Official reference: [OpenAI Build Week FAQ](https://openai.devpost.com/details/f
 
 - [x] Text description draft is at `DESCRIPTION.md` and is under 300 words.
 - [x] Feature/functionality summary is included in that draft.
-- [x] Repository URL is known: `https://gitlab.andrea-house.com/root/claim-to-commit`.
+- [x] Public repository URL is known: `https://github.com/andreab67/claim-to-commit`.
 - [ ] Select **Developer Tools** as the single track.
 - [ ] Paste the final text from `DESCRIPTION.md` into the Devpost description field.
 - [ ] Add the public YouTube URL.
-- [ ] Add the accessible GitLab repository URL.
+- [ ] Add the accessible public GitHub repository URL.
 - [ ] Add the two strongest screenshots: `docs/screenshots/evidence-chain.png` first and `docs/screenshots/claim-audit.png` second.
 - [ ] Run `/feedback` in **this primary Codex session**, copy the generated Session ID, and paste it into the required Devpost field.
 - [ ] Review entrant/profile/team fields for accuracy.
@@ -75,6 +75,5 @@ Official reference: [OpenAI Build Week FAQ](https://openai.devpost.com/details/f
 
 - [x] Current checkpoint passes 9 test files / 39 tests, type-checks, and builds.
 - [x] Production smoke test returns HTTP 200, health `ok`, bundled score 70, and five claims.
-- [ ] Re-run the fresh-clone verification after the final documentation commit and record the result here.
-- [ ] Run a final secret scan and confirm `git status --short` is empty after the last push.
-
+- [x] Fresh-clone verification passed: first-command install/build/start, HTTP 200, bundled 70% audit, live 90% self-audit, 9 test files / 39 tests, type-check, production build, and clean Git status.
+- [x] Final secret scan found no credential/private-key patterns, no environment files are tracked, and `npm audit --omit=dev` reports zero vulnerabilities; confirm the post-push Git status in the handoff.
