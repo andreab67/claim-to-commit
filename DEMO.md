@@ -13,7 +13,7 @@ Target runtime: **2:55**. The video must be public on YouTube, three minutes or 
 
 ## 0:00–0:20 — hook: the review problem
 
-**Screen:** Start on the full Claim to Commit workbench. Keep the 70% proof score and claim inventory visible.
+**Screen:** Start on the full Claim to Commit workbench. Keep the 100% proof score, **4/4 shipped claims proven** seal, and claim inventory visible.
 
 **Narration:**
 
@@ -38,11 +38,11 @@ Target runtime: **2:55**. The video must be public on YouTube, three minutes or 
 1. Scroll to the top.
 2. Click **Enable Audit Mode**.
 3. Click **Automatically infers evidence relationships with perfect accuracy**.
-4. Pause on the red **Confident prose is not proof** verdict, then point to `IMPLEMENTATION_UNPROVEN`.
+4. Pause on the **excluded audit control** label, the red **Confident prose is not proof** verdict, and `IMPLEMENTATION_UNPROVEN`.
 
 **Narration:**
 
-> Now I turn on Audit Mode and select an impressive-sounding claim. It turns red immediately. Claim to Commit found prose and a session reference, but no attributable implementation or passing test. Instead of hiding uncertainty, it tells the reviewer exactly what would make the claim defensible.
+> Now I turn on Audit Mode and select an impressive-sounding negative control. It turns red immediately. Claim to Commit found no attributable implementation or passing test. The control stays visible, but the score remains one hundred percent because it was never presented as shipped scope. Instead of hiding uncertainty, the tool discloses the exclusion and tells the reviewer exactly what would make the claim defensible.
 
 ## 1:25–2:05 — live self-audit
 
@@ -51,12 +51,12 @@ Target runtime: **2:55**. The video must be public on YouTube, three minutes or 
 1. Click **Scan a local repository**.
 2. Paste `C:\Users\andreab\claim-to-commit` into **Repository path**.
 3. Click **Run evidence scan**.
-4. When **Fresh local scan** appears, point to the 90% score.
+4. When **Fresh local scan** appears, point to the 100% score and **1 audit control excluded** disclosure.
 5. Select **Reviewers can inspect a complete visual evidence chain** and briefly show its verified screenshot node.
 
 **Narration:**
 
-> This is not only a prepared mock. I am scanning this project's own Git repository. Inspection stays local and read only. The live revision scores ninety percent: every capability we actually shipped is proven, including this interface and screenshot, while the deliberately unbuilt semantic-inference claim remains unsupported. The product demonstrates its own evidence standard.
+> This is not only a prepared mock. I am scanning this project's own Git repository. Inspection stays local and read only. The live revision scores one hundred percent: all four capabilities we shipped are proven, including this interface and screenshot, while the deliberately unbuilt semantic-inference control remains unsupported and explicitly excluded. The product demonstrates its own evidence standard.
 
 ## 2:05–2:20 — explain the practical workflow
 
@@ -64,7 +64,7 @@ Target runtime: **2:55**. The video must be public on YouTube, three minutes or 
 
 **Narration:**
 
-> A team opts in with one strict JSON manifest. Headline, major, and supporting claims have public weights, scan results are stored locally, and unsafe paths are rejected. No account, API key, hosted service, or repository upload is required.
+> A team opts in with one strict JSON manifest. Shipped claims have public weights, negative controls require an explicit exclusion, scan results are stored locally, and unsafe paths are rejected. No account, API key, hosted service, or repository upload is required.
 
 ## 2:20–2:50 — how Codex and GPT-5.6 built it
 
@@ -90,4 +90,3 @@ Target runtime: **2:55**. The video must be public on YouTube, three minutes or 
 - [ ] Codex workflow, GPT-5.6 use, and human decisions are named specifically.
 - [ ] No secrets, personal notifications, third-party trademarks, or copyrighted music appear.
 - [ ] Final upload is a **public** YouTube video.
-

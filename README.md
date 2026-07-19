@@ -28,8 +28,8 @@ The novel move is to make product claims the unit of review. A claim is not gree
 - Scans any local Git repository that opts in with `.claim-to-commit/evidence.json`.
 - Resolves decisions, declared Codex sessions, commits, changed-file attribution, test artifacts, and screenshots.
 - Uses read-only Git commands with argument arrays and rejects paths that escape the repository.
-- Calculates a reproducible weighted proof score: headline claims weigh 3, major claims 2, and supporting claims 1.
-- Reveals missing proof in **Audit Mode**, including an intentionally impressive but unsupported claim.
+- Calculates a reproducible weighted proof score: headline claims weigh 3, major claims 2, and supporting claims 1; explicitly declared negative controls are disclosed but excluded.
+- Reveals missing proof in **Audit Mode**, including an intentionally impressive but unsupported audit control.
 - Stores immutable scan results locally in SQLite; no repository content is uploaded.
 - Audits its own Build Week repository with real decisions, dated commits, tests, and screenshots.
 
@@ -73,14 +73,14 @@ The committed `fixtures/demo-scan.json` is seed data, so the complete product ex
 3. Follow its six nodes from **Decision** through **Screenshot**.
 4. Expand **How this score is calculated** in the left scorecard.
 
-Expected: the claim is **proven**, every node says **Verified**, and the bundled snapshot reports a 70% weighted proof score.
+Expected: the claim is **proven**, every node says **Verified**, and the bundled snapshot reports **100%** weighted proof coverage with **4/4 shipped claims proven**.
 
 ### Test 2: expose confident prose without proof
 
 1. Click **Enable Audit Mode** in the header.
 2. Select **Automatically infers evidence relationships with perfect accuracy**.
 
-Expected: the unsupported row and missing evidence become red, the verdict says **Confident prose is not proof**, and the open finding explains what evidence would make the claim defensible.
+Expected: the excluded audit control and its missing evidence become red, the verdict says **Confident prose is not proof**, and the open finding explains what evidence would make it defensible. The score remains 100% because the control is visibly excluded from shipped scope.
 
 ### Test 3: make the project audit itself
 
@@ -89,7 +89,7 @@ Expected: the unsupported row and missing evidence become red, the verdict says 
 3. Click **Run evidence scan**.
 4. Select **Reviewers can inspect a complete visual evidence chain**.
 
-Expected: the page changes from **Reproducible bundled snapshot** to **Fresh local scan**, the live self-audit reports 90%, the visual claim is proven, and the deliberately unimplemented semantic-inference claim remains unsupported.
+Expected: the page changes from **Reproducible bundled snapshot** to **Fresh local scan**, the live self-audit reports **100%**, all four shipped claims are proven, and the deliberately unimplemented semantic-inference control remains unsupported and excluded.
 
 ### Automated verification
 
@@ -97,7 +97,7 @@ Expected: the page changes from **Reproducible bundled snapshot** to **Fresh loc
 npm run check
 ```
 
-Expected: 9 test files and 39 tests pass, both TypeScript configurations type-check, and the production client/server build succeeds. The committed summary is in `artifacts/test-results.json`.
+Expected: 9 test files and 43 tests pass, both TypeScript configurations type-check, and the production client/server build succeeds. The committed summary is in `artifacts/test-results.json`.
 
 ## Evidence contract
 
@@ -126,6 +126,8 @@ A repository opts in with `.claim-to-commit/evidence.json`. Relationships are de
 
 The complete schema and a real self-audit are in `.claim-to-commit/evidence.json`. Unsafe relative paths, duplicate identifiers, unknown evidence types, and malformed revisions fail validation with actionable messages.
 
+A deliberately invalid negative control can declare `"scoring": "excluded-control"`. It still resolves to partial or unsupported, remains visible in Audit Mode, and shows all findings, but it never enters the shipped-claim score. The formula and exclusion count are displayed beside the score.
+
 ## Architecture
 
 | Layer | Responsibility |
@@ -145,7 +147,7 @@ The UI and API share TypeScript evidence types. Scanning is local-only: the serv
 - **Partial:** some evidence resolves, but at least one proof requirement is missing or invalid.
 - **Unsupported:** no implementation proof resolves.
 
-The score is the sum of weights for proven claims divided by the total claim weight. There is no hidden model call and no opaque confidence score.
+The score is the sum of weights for proven shipped claims divided by total shipped-claim weight. Declared audit controls remain visible but are excluded from both numerator and denominator. There is no hidden model call and no opaque confidence score.
 
 ## How Codex built this
 
@@ -162,6 +164,7 @@ The collaboration is visible in the dated commit history:
 - `d5e8d7e`: Codex added production serving, the one-command demo, committed screenshots, and a live self-audit regression test.
 - `81120c2`: Codex assembled the README, timed video script, concise Devpost description, and requirement-mapped checklist.
 - `aa279ef` and `cd07e32`: a true clean-clone test exposed a machine-level npm policy conflict; Codex narrowed the approved native install step and isolated the locked install from user configuration.
+- `8039622`: after reviewer feedback, Codex added tested negative-control semantics so shipped scope reports 100% without hiding the unsupported Audit Mode demonstration.
 
 The human decisions were the audience and trust problem, the Claim to Commit concept, local-only scope, deterministic convention-based evidence, npm portability, the icon/art direction, the Audit Mode reveal, and the explicit exclusion of auth, payments, hosted integrations, and semantic inference. Those choices are recorded in `DECISIONS.md`. Codex accelerated specification, implementation, test design, visual iteration, browser verification, documentation, and the disciplined commit trail; the product and scope calls remained human-owned.
 
