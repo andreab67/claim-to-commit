@@ -50,6 +50,26 @@ describe("scan API", () => {
     expect(response.body).toEqual(demoAudit);
   });
 
+  it("serves the built client without turning unknown API routes into HTML", async () => {
+    const clientDist = await mkdtemp(path.join(tmpdir(), "claim-client-"));
+    cleanups.push(() => rm(clientDist, { recursive: true, force: true }));
+    await writeFile(
+      path.join(clientDist, "index.html"),
+      "<!doctype html><title>Production client</title><div id=\"root\"></div>",
+    );
+    const store = createScanStore(":memory:");
+    cleanups.push(() => store.close());
+    const app = createApp({ store, demoAudit, clientDist });
+
+    const clientResponse = await request(app).get("/");
+    expect(clientResponse.status).toBe(200);
+    expect(clientResponse.text).toContain("Production client");
+
+    const apiResponse = await request(app).get("/api/does-not-exist");
+    expect(apiResponse.status).toBe(404);
+    expect(apiResponse.headers["content-type"]).not.toContain("text/html");
+  });
+
   it("scans and retrieves a repository audit", async () => {
     const fixture = await createAuditableFixture();
     cleanups.push(fixture.cleanup);

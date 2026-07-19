@@ -8,7 +8,7 @@
     {
       "id": "build-week-core",
       "label": "Build Week core session",
-      "summary": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, and scan API in this continuous session.",
+      "summary": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, scan API, and reviewer-facing workbench in this continuous session.",
       "reference": "codex://build-week/current-session"
     }
   ],
@@ -31,6 +31,11 @@
     {
       "id": "scan-api",
       "command": "npm run test:run -- tests/server/api.test.ts",
+      "resultPath": "artifacts/test-results.json"
+    },
+    {
+      "id": "ui-workbench",
+      "command": "npm run test:run -- tests/client/App.test.tsx",
       "resultPath": "artifacts/test-results.json"
     }
   ],
@@ -184,21 +189,21 @@
         {
           "id": "visual-commit",
           "type": "commit",
-          "sha": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d",
-          "label": "Runnable interface foundation"
+          "sha": "967d962ec92f85d922a00b6f1238aee07d1a0f0a",
+          "label": "Complete evidence workbench"
         },
         {
           "id": "visual-file",
           "type": "file",
           "path": "src/client/App.tsx",
-          "commit": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d",
-          "label": "Workbench application shell"
+          "commit": "967d962ec92f85d922a00b6f1238aee07d1a0f0a",
+          "label": "Interactive workbench application"
         },
         {
           "id": "visual-test",
           "type": "test",
-          "testId": "scan-api",
-          "label": "End-to-end data path test"
+          "testId": "ui-workbench",
+          "label": "Judge-visible interaction tests"
         },
         {
           "id": "visual-screenshot",

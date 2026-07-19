@@ -5,6 +5,7 @@ export interface ServerConfig {
   port: number;
   projectRoot: string;
   databasePath: string;
+  clientDist: string;
 }
 
 export function resolveConfig(): ServerConfig {
@@ -20,5 +21,6 @@ export function resolveConfig(): ServerConfig {
     port: Number.isFinite(parsedPort) ? parsedPort : 8787,
     projectRoot,
     databasePath: path.join(dataDirectory, "scans.sqlite"),
+    clientDist: path.join(projectRoot, "dist", "client"),
   };
 }

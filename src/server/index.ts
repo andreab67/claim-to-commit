@@ -8,8 +8,9 @@ const store = createScanStore(config.databasePath);
 const server = createApp({
   store,
   projectRoot: config.projectRoot,
+  clientDist: config.clientDist,
 }).listen(config.port, config.host, () => {
-  console.log(`Claim to Commit API ready at http://${config.host}:${config.port}`);
+  console.log(`Claim to Commit ready at http://${config.host}:${config.port}`);
 });
 
 function shutdown(signal: string) {
