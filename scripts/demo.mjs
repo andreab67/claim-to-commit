@@ -18,9 +18,18 @@ const npmCommand = npmExecPath ? process.execPath : "npm";
 const npmPrefix = npmExecPath ? [npmExecPath] : [];
 const projectRoot = process.cwd();
 const installedLock = path.join(projectRoot, "node_modules", ".package-lock.json");
+const projectNpmConfig = path.join(projectRoot, ".npmrc");
+const installEnvironment = Object.fromEntries(
+  Object.entries(process.env).filter(
+    ([key]) =>
+      key.toLowerCase() !== "npm_config_userconfig" &&
+      key.toLowerCase() !== "npm_config_allow_scripts",
+  ),
+);
+installEnvironment.npm_config_userconfig = projectNpmConfig;
 
 if (!existsSync(installedLock)) {
-  run("Installing locked dependencies", ["ci"]);
+  run("Installing locked dependencies", ["ci"], installEnvironment);
 }
 
 run("Building the local application", ["run", "build"]);
@@ -44,10 +53,11 @@ for (const signal of ["SIGINT", "SIGTERM"]) {
   });
 }
 
-function run(label, args) {
+function run(label, args, environment = process.env) {
   console.log(`\n${label}…`);
   const result = spawnSync(npmCommand, [...npmPrefix, ...args], {
     cwd: projectRoot,
+    env: environment,
     stdio: "inherit",
     windowsHide: true,
   });
