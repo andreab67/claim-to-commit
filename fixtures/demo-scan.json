@@ -1,0 +1,396 @@
+{
+  "scanId": "demo-claim-to-commit",
+  "scannedAt": "2026-07-19T01:10:03.000Z",
+  "source": "bundled",
+  "project": {
+    "name": "Claim to Commit",
+    "description": "A local evidence workbench that audits whether software claims are backed by decisions, commits, changed files, tests, and visual proof."
+  },
+  "repository": {
+    "displayPath": "claim-to-commit · bundled evidence snapshot",
+    "branch": "main",
+    "revision": "586f0d18c1c93b9b26d011449a468c5b1b0cc840"
+  },
+  "claims": [
+    {
+      "id": "deterministic-audit",
+      "title": "Claims are graded by transparent deterministic rules",
+      "description": "The same repository revision and manifest always produce the same proven, partial, or unsupported result.",
+      "importance": "headline",
+      "userVisible": false,
+      "status": "proven",
+      "evidence": [
+        {
+          "id": "audit-decision",
+          "type": "decision",
+          "label": "Public scoring rules",
+          "resolution": "resolved",
+          "detail": "DEC-003 is recorded in DECISIONS.md.",
+          "required": true,
+          "metadata": {
+            "decisionId": "DEC-003",
+            "path": "DECISIONS.md"
+          }
+        },
+        {
+          "id": "audit-session",
+          "type": "session",
+          "label": "Core build checkpoint",
+          "resolution": "resolved",
+          "detail": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, and scan API in this continuous session.",
+          "required": true,
+          "metadata": {
+            "sessionId": "build-week-core",
+            "reference": "codex://build-week/current-session"
+          }
+        },
+        {
+          "id": "audit-commit",
+          "type": "commit",
+          "label": "Transparent audit engine",
+          "resolution": "resolved",
+          "detail": "feat: audit claims with transparent evidence rules",
+          "required": true,
+          "metadata": {
+            "sha": "586f0d18c1c93b9b26d011449a468c5b1b0cc840",
+            "authoredAt": "2026-07-18T19:10:22-06:00",
+            "changedFiles": 12
+          }
+        },
+        {
+          "id": "audit-file",
+          "type": "file",
+          "label": "Pure claim scoring implementation",
+          "resolution": "resolved",
+          "detail": "src/server/audit/audit-claim.ts exists and is attributable.",
+          "required": true,
+          "metadata": {
+            "path": "src/server/audit/audit-claim.ts",
+            "commit": "586f0d18c1c93b9b26d011449a468c5b1b0cc840"
+          }
+        },
+        {
+          "id": "audit-test",
+          "type": "test",
+          "label": "Status boundary tests",
+          "resolution": "resolved",
+          "detail": "npm run test:run -- tests/server/audit-claim.test.ts tests/server/audit-repository.test.ts passed.",
+          "required": true,
+          "metadata": {
+            "path": "artifacts/test-results.json",
+            "command": "npm run test:run -- tests/server/audit-claim.test.ts tests/server/audit-repository.test.ts",
+            "status": "passed"
+          }
+        },
+        {
+          "id": "audit-screenshot",
+          "type": "screenshot",
+          "label": "Bundled evidence preview",
+          "resolution": "resolved",
+          "detail": "Original product artwork showing the complete six-node evidence chain",
+          "required": true,
+          "metadata": {
+            "path": "fixtures/demo-screenshot.svg",
+            "caption": "Original product artwork showing the complete six-node evidence chain"
+          }
+        }
+      ],
+      "findings": []
+    },
+    {
+      "id": "read-only-scan",
+      "title": "Local repositories are inspected safely and read only",
+      "description": "Git commands use argument arrays and evidence paths cannot escape the selected repository.",
+      "importance": "major",
+      "userVisible": false,
+      "status": "proven",
+      "evidence": [
+        {
+          "id": "scan-decision",
+          "type": "decision",
+          "label": "Local read-only boundary",
+          "resolution": "resolved",
+          "detail": "DEC-002 is recorded in DECISIONS.md.",
+          "required": true,
+          "metadata": {
+            "decisionId": "DEC-002",
+            "path": "DECISIONS.md"
+          }
+        },
+        {
+          "id": "scan-session",
+          "type": "session",
+          "label": "Git adapter checkpoint",
+          "resolution": "resolved",
+          "detail": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, and scan API in this continuous session.",
+          "required": true,
+          "metadata": {
+            "sessionId": "build-week-core",
+            "reference": "codex://build-week/current-session"
+          }
+        },
+        {
+          "id": "scan-commit",
+          "type": "commit",
+          "label": "Safe evidence resolution",
+          "resolution": "resolved",
+          "detail": "feat: resolve Git and repository evidence safely",
+          "required": true,
+          "metadata": {
+            "sha": "a3268c8d9a5717228a982dc2f4dfc30e7cff70ae",
+            "authoredAt": "2026-07-18T19:07:14-06:00",
+            "changedFiles": 9
+          }
+        },
+        {
+          "id": "scan-file",
+          "type": "file",
+          "label": "Read-only Git adapter",
+          "resolution": "resolved",
+          "detail": "src/server/git/git-client.ts exists and is attributable.",
+          "required": true,
+          "metadata": {
+            "path": "src/server/git/git-client.ts",
+            "commit": "a3268c8d9a5717228a982dc2f4dfc30e7cff70ae"
+          }
+        },
+        {
+          "id": "scan-test",
+          "type": "test",
+          "label": "Git and path boundary tests",
+          "resolution": "resolved",
+          "detail": "npm run test:run -- tests/server/git-client.test.ts tests/server/validate-evidence.test.ts passed.",
+          "required": true,
+          "metadata": {
+            "path": "artifacts/test-results.json",
+            "command": "npm run test:run -- tests/server/git-client.test.ts tests/server/validate-evidence.test.ts",
+            "status": "passed"
+          }
+        }
+      ],
+      "findings": []
+    },
+    {
+      "id": "evidence-contract",
+      "title": "Repositories opt into an explicit evidence contract",
+      "description": "Unsafe paths, duplicate IDs, malformed claims, and unknown evidence types are rejected before scanning.",
+      "importance": "major",
+      "userVisible": false,
+      "status": "proven",
+      "evidence": [
+        {
+          "id": "contract-decision",
+          "type": "decision",
+          "label": "Explicit evidence choice",
+          "resolution": "resolved",
+          "detail": "DEC-001 is recorded in DECISIONS.md.",
+          "required": true,
+          "metadata": {
+            "decisionId": "DEC-001",
+            "path": "DECISIONS.md"
+          }
+        },
+        {
+          "id": "contract-session",
+          "type": "session",
+          "label": "Manifest contract checkpoint",
+          "resolution": "resolved",
+          "detail": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, and scan API in this continuous session.",
+          "required": true,
+          "metadata": {
+            "sessionId": "build-week-core",
+            "reference": "codex://build-week/current-session"
+          }
+        },
+        {
+          "id": "contract-commit",
+          "type": "commit",
+          "label": "Evidence schema commit",
+          "resolution": "resolved",
+          "detail": "feat: define explicit repository evidence contract",
+          "required": true,
+          "metadata": {
+            "sha": "952cf92e040159a52f7d7047c195c3cd447e7512",
+            "authoredAt": "2026-07-18T19:04:48-06:00",
+            "changedFiles": 6
+          }
+        },
+        {
+          "id": "contract-file",
+          "type": "file",
+          "label": "Manifest schema",
+          "resolution": "resolved",
+          "detail": "src/shared/schema.ts exists and is attributable.",
+          "required": true,
+          "metadata": {
+            "path": "src/shared/schema.ts",
+            "commit": "952cf92e040159a52f7d7047c195c3cd447e7512"
+          }
+        },
+        {
+          "id": "contract-test",
+          "type": "test",
+          "label": "Schema safety tests",
+          "resolution": "resolved",
+          "detail": "npm run test:run -- tests/shared/schema.test.ts passed.",
+          "required": true,
+          "metadata": {
+            "path": "artifacts/test-results.json",
+            "command": "npm run test:run -- tests/shared/schema.test.ts",
+            "status": "passed"
+          }
+        }
+      ],
+      "findings": []
+    },
+    {
+      "id": "visual-workbench",
+      "title": "Reviewers can inspect a complete visual evidence chain",
+      "description": "The final workbench connects the headline claim to decision, session, commit, file, test, and screenshot nodes.",
+      "importance": "major",
+      "userVisible": true,
+      "status": "partial",
+      "evidence": [
+        {
+          "id": "visual-decision",
+          "type": "decision",
+          "label": "Evidence-first submission",
+          "resolution": "resolved",
+          "detail": "DEC-005 is recorded in DECISIONS.md.",
+          "required": true,
+          "metadata": {
+            "decisionId": "DEC-005",
+            "path": "DECISIONS.md"
+          }
+        },
+        {
+          "id": "visual-session",
+          "type": "session",
+          "label": "Interface build checkpoint",
+          "resolution": "resolved",
+          "detail": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, and scan API in this continuous session.",
+          "required": true,
+          "metadata": {
+            "sessionId": "build-week-core",
+            "reference": "codex://build-week/current-session"
+          }
+        },
+        {
+          "id": "visual-commit",
+          "type": "commit",
+          "label": "Runnable interface foundation",
+          "resolution": "resolved",
+          "detail": "chore: scaffold runnable evidence workbench",
+          "required": true,
+          "metadata": {
+            "sha": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d",
+            "authoredAt": "2026-07-18T19:03:00-06:00",
+            "changedFiles": 17
+          }
+        },
+        {
+          "id": "visual-file",
+          "type": "file",
+          "label": "Workbench application shell",
+          "resolution": "resolved",
+          "detail": "src/client/App.tsx exists and is attributable.",
+          "required": true,
+          "metadata": {
+            "path": "src/client/App.tsx",
+            "commit": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d"
+          }
+        },
+        {
+          "id": "visual-test",
+          "type": "test",
+          "label": "End-to-end data path test",
+          "resolution": "resolved",
+          "detail": "npm run test:run -- tests/server/api.test.ts passed.",
+          "required": true,
+          "metadata": {
+            "path": "artifacts/test-results.json",
+            "command": "npm run test:run -- tests/server/api.test.ts",
+            "status": "passed"
+          }
+        },
+        {
+          "id": "visual-screenshot",
+          "type": "screenshot",
+          "label": "Completed evidence chain",
+          "resolution": "missing",
+          "detail": "docs/screenshots/evidence-chain.png does not exist in the repository.",
+          "required": true,
+          "metadata": {
+            "path": "docs/screenshots/evidence-chain.png",
+            "findingCode": "SCREENSHOT_MISSING"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "code": "SCREENSHOT_MISSING",
+          "severity": "error",
+          "message": "docs/screenshots/evidence-chain.png does not exist in the repository.",
+          "guidance": "Add a repository screenshot that visibly demonstrates this claim.",
+          "evidenceId": "visual-screenshot"
+        }
+      ]
+    },
+    {
+      "id": "semantic-inference",
+      "title": "Automatically infers evidence relationships with perfect accuracy",
+      "description": "A deliberately unsupported demonstration claim. Claim to Commit verifies explicit links; it does not pretend semantic guesses are proof.",
+      "importance": "supporting",
+      "userVisible": false,
+      "status": "unsupported",
+      "evidence": [
+        {
+          "id": "inference-commit",
+          "type": "commit",
+          "label": "No implementation exists",
+          "resolution": "missing",
+          "detail": "Commit 0000000000000000000000000000000000000000 could not be resolved in the scanned history.",
+          "required": true,
+          "metadata": {
+            "sha": "0000000000000000000000000000000000000000",
+            "findingCode": "COMMIT_MISSING"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "code": "COMMIT_MISSING",
+          "severity": "error",
+          "message": "Commit 0000000000000000000000000000000000000000 could not be resolved in the scanned history.",
+          "guidance": "Reference an implementation commit that exists in this repository.",
+          "evidenceId": "inference-commit"
+        },
+        {
+          "code": "IMPLEMENTATION_UNPROVEN",
+          "severity": "error",
+          "message": "No implementation commit proves this claim.",
+          "guidance": "Connect the claim to a resolvable implementation commit before presenting it as delivered."
+        },
+        {
+          "code": "FILE_MISSING",
+          "severity": "error",
+          "message": "No resolved file evidence supports this claim.",
+          "guidance": "Reference a changed implementation file that exists in the repository."
+        },
+        {
+          "code": "TEST_MISSING",
+          "severity": "error",
+          "message": "No resolved test evidence supports this claim.",
+          "guidance": "Declare a machine-readable passing test result for this claim."
+        }
+      ]
+    }
+  ],
+  "score": 70,
+  "formula": "7 proven weight ÷ 10 total weight × 100",
+  "counts": {
+    "proven": 3,
+    "partial": 1,
+    "unsupported": 1
+  }
+}

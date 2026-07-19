@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "project": {
+    "name": "Claim to Commit",
+    "description": "A local evidence workbench that audits whether software claims are backed by decisions, commits, changed files, tests, and visual proof."
+  },
+  "sessions": [
+    {
+      "id": "build-week-core",
+      "label": "Build Week core session",
+      "summary": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, and scan API in this continuous session.",
+      "reference": "codex://build-week/current-session"
+    }
+  ],
+  "tests": [
+    {
+      "id": "evidence-contract",
+      "command": "npm run test:run -- tests/shared/schema.test.ts",
+      "resultPath": "artifacts/test-results.json"
+    },
+    {
+      "id": "git-evidence",
+      "command": "npm run test:run -- tests/server/git-client.test.ts tests/server/validate-evidence.test.ts",
+      "resultPath": "artifacts/test-results.json"
+    },
+    {
+      "id": "audit-engine",
+      "command": "npm run test:run -- tests/server/audit-claim.test.ts tests/server/audit-repository.test.ts",
+      "resultPath": "artifacts/test-results.json"
+    },
+    {
+      "id": "scan-api",
+      "command": "npm run test:run -- tests/server/api.test.ts",
+      "resultPath": "artifacts/test-results.json"
+    }
+  ],
+  "claims": [
+    {
+      "id": "deterministic-audit",
+      "title": "Claims are graded by transparent deterministic rules",
+      "description": "The same repository revision and manifest always produce the same proven, partial, or unsupported result.",
+      "importance": "headline",
+      "userVisible": false,
+      "evidence": [
+        {
+          "id": "audit-decision",
+          "type": "decision",
+          "decisionId": "DEC-003",
+          "label": "Public scoring rules"
+        },
+        {
+          "id": "audit-session",
+          "type": "session",
+          "sessionId": "build-week-core",
+          "label": "Core build checkpoint"
+        },
+        {
+          "id": "audit-commit",
+          "type": "commit",
+          "sha": "586f0d18c1c93b9b26d011449a468c5b1b0cc840",
+          "label": "Transparent audit engine"
+        },
+        {
+          "id": "audit-file",
+          "type": "file",
+          "path": "src/server/audit/audit-claim.ts",
+          "commit": "586f0d18c1c93b9b26d011449a468c5b1b0cc840",
+          "label": "Pure claim scoring implementation"
+        },
+        {
+          "id": "audit-test",
+          "type": "test",
+          "testId": "audit-engine",
+          "label": "Status boundary tests"
+        },
+        {
+          "id": "audit-screenshot",
+          "type": "screenshot",
+          "path": "fixtures/demo-screenshot.svg",
+          "label": "Bundled evidence preview",
+          "caption": "Original product artwork showing the complete six-node evidence chain"
+        }
+      ]
+    },
+    {
+      "id": "read-only-scan",
+      "title": "Local repositories are inspected safely and read only",
+      "description": "Git commands use argument arrays and evidence paths cannot escape the selected repository.",
+      "importance": "major",
+      "userVisible": false,
+      "evidence": [
+        {
+          "id": "scan-decision",
+          "type": "decision",
+          "decisionId": "DEC-002",
+          "label": "Local read-only boundary"
+        },
+        {
+          "id": "scan-session",
+          "type": "session",
+          "sessionId": "build-week-core",
+          "label": "Git adapter checkpoint"
+        },
+        {
+          "id": "scan-commit",
+          "type": "commit",
+          "sha": "a3268c8d9a5717228a982dc2f4dfc30e7cff70ae",
+          "label": "Safe evidence resolution"
+        },
+        {
+          "id": "scan-file",
+          "type": "file",
+          "path": "src/server/git/git-client.ts",
+          "commit": "a3268c8d9a5717228a982dc2f4dfc30e7cff70ae",
+          "label": "Read-only Git adapter"
+        },
+        {
+          "id": "scan-test",
+          "type": "test",
+          "testId": "git-evidence",
+          "label": "Git and path boundary tests"
+        }
+      ]
+    },
+    {
+      "id": "evidence-contract",
+      "title": "Repositories opt into an explicit evidence contract",
+      "description": "Unsafe paths, duplicate IDs, malformed claims, and unknown evidence types are rejected before scanning.",
+      "importance": "major",
+      "userVisible": false,
+      "evidence": [
+        {
+          "id": "contract-decision",
+          "type": "decision",
+          "decisionId": "DEC-001",
+          "label": "Explicit evidence choice"
+        },
+        {
+          "id": "contract-session",
+          "type": "session",
+          "sessionId": "build-week-core",
+          "label": "Manifest contract checkpoint"
+        },
+        {
+          "id": "contract-commit",
+          "type": "commit",
+          "sha": "952cf92e040159a52f7d7047c195c3cd447e7512",
+          "label": "Evidence schema commit"
+        },
+        {
+          "id": "contract-file",
+          "type": "file",
+          "path": "src/shared/schema.ts",
+          "commit": "952cf92e040159a52f7d7047c195c3cd447e7512",
+          "label": "Manifest schema"
+        },
+        {
+          "id": "contract-test",
+          "type": "test",
+          "testId": "evidence-contract",
+          "label": "Schema safety tests"
+        }
+      ]
+    },
+    {
+      "id": "visual-workbench",
+      "title": "Reviewers can inspect a complete visual evidence chain",
+      "description": "The final workbench connects the headline claim to decision, session, commit, file, test, and screenshot nodes.",
+      "importance": "major",
+      "userVisible": true,
+      "evidence": [
+        {
+          "id": "visual-decision",
+          "type": "decision",
+          "decisionId": "DEC-005",
+          "label": "Evidence-first submission"
+        },
+        {
+          "id": "visual-session",
+          "type": "session",
+          "sessionId": "build-week-core",
+          "label": "Interface build checkpoint"
+        },
+        {
+          "id": "visual-commit",
+          "type": "commit",
+          "sha": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d",
+          "label": "Runnable interface foundation"
+        },
+        {
+          "id": "visual-file",
+          "type": "file",
+          "path": "src/client/App.tsx",
+          "commit": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d",
+          "label": "Workbench application shell"
+        },
+        {
+          "id": "visual-test",
+          "type": "test",
+          "testId": "scan-api",
+          "label": "End-to-end data path test"
+        },
+        {
+          "id": "visual-screenshot",
+          "type": "screenshot",
+          "path": "docs/screenshots/evidence-chain.png",
+          "label": "Completed evidence chain",
+          "caption": "The final Claim to Commit evidence workbench"
+        }
+      ]
+    },
+    {
+      "id": "semantic-inference",
+      "title": "Automatically infers evidence relationships with perfect accuracy",
+      "description": "A deliberately unsupported demonstration claim. Claim to Commit verifies explicit links; it does not pretend semantic guesses are proof.",
+      "importance": "supporting",
+      "userVisible": false,
+      "evidence": [
+        {
+          "id": "inference-commit",
+          "type": "commit",
+          "sha": "0000000000000000000000000000000000000000",
+          "label": "No implementation exists"
+        }
+      ]
+    }
+  ]
+}

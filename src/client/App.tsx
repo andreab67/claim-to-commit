@@ -3,9 +3,7 @@ export function App() {
     <main className="shell">
       <header className="brand-bar">
         <a className="brand" href="/" aria-label="Claim to Commit home">
-          <span className="brand-mark" aria-hidden="true">
-            C→C
-          </span>
+          <img className="brand-mark" src="/icon.png" alt="" width="42" height="42" />
           <span>Claim to Commit</span>
         </a>
         <span className="local-badge">Local evidence only</span>

@@ -22,14 +22,11 @@
 }
 
 .brand-mark {
-  display: grid;
   width: 42px;
   height: 42px;
-  place-items: center;
-  border: 1px solid var(--ink);
-  border-radius: 10px;
-  font-family: var(--mono);
-  font-size: 12px;
+  border-radius: 11px;
+  object-fit: cover;
+  box-shadow: 0 5px 16px rgb(5 22 44 / 18%);
 }
 
 .local-badge {

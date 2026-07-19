@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T01:10:03.000Z",
+  "status": "passed",
+  "command": "npm run check",
+  "summary": {
+    "files": 6,
+    "total": 32,
+    "passed": 32,
+    "failed": 0
+  },
+  "tests": [
+    {
+      "id": "evidence-contract",
+      "status": "passed"
+    },
+    {
+      "id": "git-evidence",
+      "status": "passed"
+    },
+    {
+      "id": "audit-engine",
+      "status": "passed"
+    },
+    {
+      "id": "scan-api",
+      "status": "passed"
+    }
+  ]
+}
