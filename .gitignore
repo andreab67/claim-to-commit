@@ -6,6 +6,7 @@
 node_modules/
 dist/
 coverage/
+artifacts/demo-recording/
 
 # Local scan cache and environment overrides
 .data/
