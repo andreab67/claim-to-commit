@@ -220,6 +220,7 @@
       "description": "A deliberately unsupported demonstration claim. Claim to Commit verifies explicit links; it does not pretend semantic guesses are proof.",
       "importance": "supporting",
       "userVisible": false,
+      "scoring": "excluded-control",
       "evidence": [
         {
           "id": "inference-commit",

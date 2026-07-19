@@ -74,6 +74,18 @@ describe("auditClaim", () => {
     );
   });
 
+  it("carries an excluded audit-control declaration into the result", () => {
+    const result = auditClaim(
+      { ...claim, scoring: "excluded-control" },
+      [evidence("commit", "missing", "COMMIT_MISSING")],
+    );
+
+    expect(result).toMatchObject({
+      status: "unsupported",
+      scoring: "excluded-control",
+    });
+  });
+
   it("requires visual proof only for user-visible claims", () => {
     const invisibleClaim = { ...claim, userVisible: false };
     const evidenceSet = [evidence("commit"), evidence("file"), evidence("test")];

@@ -89,6 +89,20 @@ describe("parseEvidenceManifest", () => {
     ]);
   });
 
+  it("preserves an explicitly excluded audit control", () => {
+    const result = parseEvidenceManifest({
+      ...validManifest,
+      claims: [
+        {
+          ...validManifest.claims[0],
+          scoring: "excluded-control",
+        },
+      ],
+    });
+
+    expect(result.claims[0]?.scoring).toBe("excluded-control");
+  });
+
   it("requires at least one claim", () => {
     expect(() =>
       parseEvidenceManifest({ ...validManifest, claims: [] }),

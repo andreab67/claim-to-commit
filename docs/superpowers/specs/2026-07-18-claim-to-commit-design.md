@@ -23,7 +23,7 @@ The three-minute demonstration uses Claim to Commit's own repository.
 6. An intentionally unsupported claim becomes red, and the inspector explains that it has no test or visual artifact.
 7. The presenter closes on the product principle: confident prose is not proof; inspectable evidence is.
 
-The unsupported claim is clearly labeled as a demonstration fixture. It is never presented as a real capability.
+The unsupported claim is clearly labeled as an excluded audit control. It is never presented as a real capability or included in shipped-claim coverage.
 
 ## 3. Product Scope
 
@@ -102,7 +102,7 @@ A claim is `partial` when implementation evidence exists but one or more require
 
 A claim is `unsupported` when it has no valid implementation commit or all supplied evidence references fail validation.
 
-The repository score is the percentage of claims proven, weighted by importance: headline claims count three, major claims count two, and supporting claims count one. The interface always exposes this formula.
+The repository score is the percentage of shipped claims proven, weighted by importance: headline claims count three, major claims count two, and supporting claims count one. Explicit negative audit controls remain visible but are excluded from both numerator and denominator. The interface always exposes this formula and the exclusion count.
 
 ## 6. Architecture
 

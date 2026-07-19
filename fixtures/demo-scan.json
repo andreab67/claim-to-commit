@@ -249,7 +249,7 @@
       "description": "The final workbench connects the headline claim to decision, session, commit, file, test, and screenshot nodes.",
       "importance": "major",
       "userVisible": true,
-      "status": "partial",
+      "status": "proven",
       "evidence": [
         {
           "id": "visual-decision",
@@ -268,7 +268,7 @@
           "type": "session",
           "label": "Interface build checkpoint",
           "resolution": "resolved",
-          "detail": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, and scan API in this continuous session.",
+          "detail": "Codex and GPT-5.6 built the product contract, strict scaffold, evidence schema, Git adapters, deterministic audit engine, scan API, and reviewer-facing workbench in this continuous session.",
           "required": true,
           "metadata": {
             "sessionId": "build-week-core",
@@ -278,38 +278,38 @@
         {
           "id": "visual-commit",
           "type": "commit",
-          "label": "Runnable interface foundation",
+          "label": "Complete evidence workbench",
           "resolution": "resolved",
-          "detail": "chore: scaffold runnable evidence workbench",
+          "detail": "feat: reveal claim provenance in an audit workbench",
           "required": true,
           "metadata": {
-            "sha": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d",
-            "authoredAt": "2026-07-18T19:03:00-06:00",
-            "changedFiles": 17
+            "sha": "967d962ec92f85d922a00b6f1238aee07d1a0f0a",
+            "authoredAt": "2026-07-18T19:24:00-06:00",
+            "changedFiles": 13
           }
         },
         {
           "id": "visual-file",
           "type": "file",
-          "label": "Workbench application shell",
+          "label": "Interactive workbench application",
           "resolution": "resolved",
           "detail": "src/client/App.tsx exists and is attributable.",
           "required": true,
           "metadata": {
             "path": "src/client/App.tsx",
-            "commit": "b4c21a4d86ba939d1c50979d8237e3ec9c71ca7d"
+            "commit": "967d962ec92f85d922a00b6f1238aee07d1a0f0a"
           }
         },
         {
           "id": "visual-test",
           "type": "test",
-          "label": "End-to-end data path test",
+          "label": "Judge-visible interaction tests",
           "resolution": "resolved",
-          "detail": "npm run test:run -- tests/server/api.test.ts passed.",
+          "detail": "npm run test:run -- tests/client/App.test.tsx passed.",
           "required": true,
           "metadata": {
             "path": "artifacts/test-results.json",
-            "command": "npm run test:run -- tests/server/api.test.ts",
+            "command": "npm run test:run -- tests/client/App.test.tsx",
             "status": "passed"
           }
         },
@@ -317,24 +317,16 @@
           "id": "visual-screenshot",
           "type": "screenshot",
           "label": "Completed evidence chain",
-          "resolution": "missing",
-          "detail": "docs/screenshots/evidence-chain.png does not exist in the repository.",
+          "resolution": "resolved",
+          "detail": "The final Claim to Commit evidence workbench",
           "required": true,
           "metadata": {
             "path": "docs/screenshots/evidence-chain.png",
-            "findingCode": "SCREENSHOT_MISSING"
+            "caption": "The final Claim to Commit evidence workbench"
           }
         }
       ],
-      "findings": [
-        {
-          "code": "SCREENSHOT_MISSING",
-          "severity": "error",
-          "message": "docs/screenshots/evidence-chain.png does not exist in the repository.",
-          "guidance": "Add a repository screenshot that visibly demonstrates this claim.",
-          "evidenceId": "visual-screenshot"
-        }
-      ]
+      "findings": []
     },
     {
       "id": "semantic-inference",
@@ -342,6 +334,7 @@
       "description": "A deliberately unsupported demonstration claim. Claim to Commit verifies explicit links; it does not pretend semantic guesses are proof.",
       "importance": "supporting",
       "userVisible": false,
+      "scoring": "excluded-control",
       "status": "unsupported",
       "evidence": [
         {
@@ -386,11 +379,11 @@
       ]
     }
   ],
-  "score": 70,
-  "formula": "7 proven weight ÷ 10 total weight × 100",
+  "score": 100,
+  "formula": "9 proven weight ÷ 9 scored weight × 100 · 1 audit control excluded",
   "counts": {
-    "proven": 3,
-    "partial": 1,
+    "proven": 4,
+    "partial": 0,
     "unsupported": 1
   }
 }

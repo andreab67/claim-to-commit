@@ -67,7 +67,11 @@ export function ClaimList({
             <span className="claim-number">{String(index + 1).padStart(2, "0")}</span>
             <span className="claim-row-copy">
               <strong>{claim.title}</strong>
-              <small>{claim.importance} claim</small>
+              <small>
+                {claim.scoring === "excluded-control"
+                  ? "excluded audit control"
+                  : `${claim.importance} claim`}
+              </small>
             </span>
             <span className="claim-status">
               <span aria-hidden="true">{STATUS_MARK[claim.status]}</span>

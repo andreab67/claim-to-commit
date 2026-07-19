@@ -4,6 +4,9 @@ export type AuditStatus = (typeof AUDIT_STATUSES)[number];
 export const CLAIM_IMPORTANCE = ["headline", "major", "supporting"] as const;
 export type ClaimImportance = (typeof CLAIM_IMPORTANCE)[number];
 
+export const CLAIM_SCORING = ["included", "excluded-control"] as const;
+export type ClaimScoring = (typeof CLAIM_SCORING)[number];
+
 export const EVIDENCE_TYPES = [
   "decision",
   "session",
@@ -79,6 +82,7 @@ export interface Claim {
   description: string;
   importance: ClaimImportance;
   userVisible: boolean;
+  scoring?: ClaimScoring;
   evidence: EvidenceReference[];
 }
 
@@ -121,6 +125,7 @@ export interface ClaimAudit {
   description: string;
   importance: ClaimImportance;
   userVisible: boolean;
+  scoring?: ClaimScoring;
   status: AuditStatus;
   evidence: ResolvedEvidence[];
   findings: Finding[];

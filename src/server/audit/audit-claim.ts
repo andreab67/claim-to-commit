@@ -65,6 +65,7 @@ export function auditClaim(
     description: claim.description,
     importance: claim.importance,
     userVisible: claim.userVisible,
+    scoring: claim.scoring ?? "included",
     status,
     evidence,
     findings,

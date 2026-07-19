@@ -19,12 +19,12 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-function mockDemo() {
+function mockDemo(audit: unknown = demoAudit) {
   vi.stubGlobal(
     "fetch",
     vi.fn().mockResolvedValue({
       ok: true,
-      json: () => Promise.resolve(demoAudit),
+      json: () => Promise.resolve(audit),
     }),
   );
 }
@@ -39,7 +39,7 @@ describe("Claim to Commit workbench", () => {
         name: "Claims are graded by transparent deterministic rules",
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText("70%")).toBeInTheDocument();
+    expect(screen.getByText("100%")).toBeInTheDocument();
 
     const chain = screen.getByLabelText("Evidence chain");
     for (const label of [
@@ -57,7 +57,7 @@ describe("Claim to Commit workbench", () => {
   it("turns unsupported confidence into an explicit audit finding", async () => {
     mockDemo();
     render(<App />);
-    await screen.findByText("70%");
+    await screen.findByText("100%");
 
     fireEvent.click(
       screen.getByRole("button", {
@@ -76,10 +76,40 @@ describe("Claim to Commit workbench", () => {
     expect(screen.getByText("Confident prose is not proof.")).toBeInTheDocument();
   });
 
+  it("shows complete shipped coverage while labeling the excluded audit control", async () => {
+    const controlAwareAudit = {
+      ...demoAudit,
+      score: 100,
+      formula:
+        "9 proven weight ÷ 9 scored weight × 100 · 1 audit control excluded",
+      counts: { proven: 4, partial: 0, unsupported: 1 },
+      claims: demoAudit.claims.map((claim) => ({
+        ...claim,
+        status: claim.id === "visual-workbench" ? "proven" : claim.status,
+        scoring:
+          claim.id === "semantic-inference" ? "excluded-control" : "included",
+      })),
+    };
+    mockDemo(controlAwareAudit);
+    render(<App />);
+
+    expect(await screen.findByText("100%")).toBeInTheDocument();
+    expect(screen.getByText("4/4")).toBeInTheDocument();
+    expect(screen.getByText("shipped claims proven")).toBeInTheDocument();
+    expect(screen.getByText("1 audit control excluded")).toBeInTheDocument();
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: "Automatically infers evidence relationships with perfect accuracy",
+      }),
+    );
+    expect(screen.getAllByText("excluded audit control").length).toBeGreaterThan(0);
+  });
+
   it("submits a local repository path and displays the returned audit", async () => {
     mockDemo();
     render(<App />);
-    await screen.findByText("70%");
+    await screen.findByText("100%");
 
     const fetchMock = vi.mocked(fetch);
     fetchMock.mockResolvedValueOnce({

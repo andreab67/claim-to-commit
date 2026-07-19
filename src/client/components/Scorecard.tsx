@@ -5,6 +5,14 @@ interface ScorecardProps {
 }
 
 export function Scorecard({ audit }: ScorecardProps) {
+  const scoredClaims = audit.claims.filter(
+    (claim) => claim.scoring !== "excluded-control",
+  );
+  const scoredProven = scoredClaims.filter(
+    (claim) => claim.status === "proven",
+  ).length;
+  const excludedControlCount = audit.claims.length - scoredClaims.length;
+
   return (
     <section className="scorecard" aria-labelledby="proof-score-title">
       <div className="scorecard-heading">
@@ -17,8 +25,8 @@ export function Scorecard({ audit }: ScorecardProps) {
         </div>
         <div className="score-seal" aria-hidden="true">
           <span>Evidence</span>
-          <strong>{audit.counts.proven}/{audit.claims.length}</strong>
-          <span>claims proven</span>
+          <strong>{scoredProven}/{scoredClaims.length}</strong>
+          <span>shipped claims proven</span>
         </div>
       </div>
 
@@ -46,9 +54,18 @@ export function Scorecard({ audit }: ScorecardProps) {
         </div>
       </dl>
 
+      {excludedControlCount > 0 ? (
+        <p className="score-exclusion-note">
+          {excludedControlCount} audit control{excludedControlCount === 1 ? "" : "s"} excluded
+        </p>
+      ) : null}
+
       <details className="formula-disclosure">
         <summary>How this score is calculated</summary>
-        <p>{audit.formula}. Headline claims weigh 3, major claims 2, and supporting claims 1.</p>
+        <p>
+          {audit.formula}. Headline claims weigh 3, major claims 2, and supporting
+          claims 1. Declared audit controls remain visible but never enter the score.
+        </p>
       </details>
     </section>
   );

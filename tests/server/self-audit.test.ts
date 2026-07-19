@@ -16,7 +16,7 @@ describe("live Claim to Commit self-audit", () => {
         (claim) => claim.id === "semantic-inference",
       );
 
-      expect(audit.score).toBe(90);
+      expect(audit.score).toBe(100);
       expect(visualClaim).toMatchObject({ status: "proven", findings: [] });
       expect(visualClaim?.evidence).toEqual(
         expect.arrayContaining([
@@ -36,6 +36,7 @@ describe("live Claim to Commit self-audit", () => {
       );
       expect(unsupportedClaim).toMatchObject({
         status: "unsupported",
+        scoring: "excluded-control",
         findings: expect.arrayContaining([
           expect.objectContaining({ code: "IMPLEMENTATION_UNPROVEN" }),
         ]),

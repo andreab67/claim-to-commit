@@ -16,10 +16,12 @@ describe("bundled demo evidence", () => {
     expect(audit).toMatchObject({
       scanId: "demo-claim-to-commit",
       source: "bundled",
-      score: 70,
-      counts: { proven: 3, partial: 1, unsupported: 1 },
+      score: 100,
+      counts: { proven: 4, partial: 0, unsupported: 1 },
     });
-    expect(audit.formula).toBe("7 proven weight ÷ 10 total weight × 100");
+    expect(audit.formula).toBe(
+      "9 proven weight ÷ 9 scored weight × 100 · 1 audit control excluded",
+    );
 
     const headline = audit.claims.find(
       (claim) => claim.id === "deterministic-audit",
@@ -36,10 +38,16 @@ describe("bundled demo evidence", () => {
     expect(headline?.evidence.every((evidence) => evidence.resolution === "resolved"))
       .toBe(true);
 
+    const visual = audit.claims.find((claim) => claim.id === "visual-workbench");
+    expect(visual).toMatchObject({ status: "proven", findings: [] });
+
     const unsupported = audit.claims.find(
       (claim) => claim.id === "semantic-inference",
     );
-    expect(unsupported).toMatchObject({ status: "unsupported" });
+    expect(unsupported).toMatchObject({
+      status: "unsupported",
+      scoring: "excluded-control",
+    });
     expect(unsupported?.description).toMatch(/deliberately unsupported/i);
     expect(unsupported?.findings.map((finding) => finding.code)).toContain(
       "IMPLEMENTATION_UNPROVEN",

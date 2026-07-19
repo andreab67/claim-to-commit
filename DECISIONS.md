@@ -37,6 +37,13 @@ This ledger records the human product and scope decisions that shape Claim to Co
 **Decision:** Prioritize the evidence chain, Audit Mode reveal, self-scan, screenshots, demo script, and fresh-clone path. Exclude authentication, hosted Git providers, semantic inference, cloud deployment, dark mode, payments, and unrelated settings.  
 **Consequence:** Claim to Commit can be a complete focused product instead of a broad unfinished platform.
 
+## DEC-006: Keep negative audit controls outside shipped-claim coverage
+
+**Date:** July 18, 2026  
+**Context:** The deliberately unsupported semantic-inference example proves that Audit Mode catches confident prose, but counting that test control as shipped scope makes a fully evidenced build appear incomplete.  
+**Decision:** A claim may explicitly declare `scoring: "excluded-control"`. It remains visible, unsupported, and inspectable, while the numerator and denominator include only shipped claims. The UI must disclose both the exclusion and the complete formula.  
+**Consequence:** The self-audit honestly reports 100% coverage for four shipped claims while preserving one red negative control for the demonstration.
+
 ## Scope-cut rule
 
 If a vertical slice stalls for approximately 45 focused minutes, record the attempted scope, the narrower replacement, and the effect here before continuing. The submission package begins no later than July 20, 2026 at 5:00 PM Pacific Time.

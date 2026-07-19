@@ -392,6 +392,16 @@
   color: var(--audit);
 }
 
+.score-exclusion-note {
+  margin: 16px 0 0;
+  color: var(--audit);
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .formula-disclosure {
   margin-top: 20px;
   color: var(--muted);

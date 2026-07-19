@@ -17,7 +17,11 @@ export function ClaimInspector({ claim, auditMode }: ClaimInspectorProps) {
     <article className={`claim-inspector status-${claim.status}`}>
       <header className="inspector-header">
         <div className="claim-classification">
-          <span>{claim.importance} claim</span>
+          <span>
+            {claim.scoring === "excluded-control"
+              ? "excluded audit control"
+              : `${claim.importance} claim`}
+          </span>
           <span className="inspector-status">
             <span aria-hidden="true">{STATUS_ICON[claim.status]}</span>
             {claim.status}

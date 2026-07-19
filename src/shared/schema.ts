@@ -74,6 +74,7 @@ const claimSchema = z
     description: z.string().min(1).max(600),
     importance: z.enum(["headline", "major", "supporting"]),
     userVisible: z.boolean(),
+    scoring: z.enum(["included", "excluded-control"]).optional(),
     evidence: z.array(evidenceReferenceSchema).min(1),
   })
   .superRefine((claim, context) => {
